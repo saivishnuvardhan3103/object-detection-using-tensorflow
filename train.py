@@ -17,15 +17,15 @@ logging.set_verbosity(logging.ERROR)
 
 
 train_data = object_detector.DataLoader.from_pascal_voc(
-    'freedomtech/train',
-    'freedomtech/train',
-    ['esp8266', 'pico']
+    'freedomtech2/train',
+    'freedomtech2/train',
+    ['marture_coconut']
 )
 
 val_data = object_detector.DataLoader.from_pascal_voc(
     'freedomtech/validate',
     'freedomtech/validate',
-    ['esp8266', 'pico']
+    ['marture_coconut']
 )
 
 
@@ -37,11 +37,11 @@ spec = model_spec.get('efficientdet_lite0')
 
 
 
-model = object_detector.create(train_data, model_spec=spec, batch_size=4, train_whole_model=True, epochs=20, validation_data=val_data)
+model = object_detector.create(train_data, model_spec=spec, batch_size=4, train_whole_model=True, epochs=50, validation_data=val_data)
 
 
 
 model.evaluate(val_data)
 
 
-model.export(export_dir='.', tflite_filename='best.tflite')
+model.export(export_dir='.', tflite_filename='vishnu.tflite')
